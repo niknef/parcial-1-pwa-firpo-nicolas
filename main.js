@@ -50,4 +50,9 @@ function openModal(name, image, species, status, gender, url, id) {
    
 }
 
+function redirectToHistorial() {
+    window.location.href = './html/historial.html';
+}
+
+
 fetchPersonaje();
