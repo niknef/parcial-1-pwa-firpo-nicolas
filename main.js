@@ -50,14 +50,24 @@ function openModal(name, image, species, status, gender, url, id) {
 
     const personaje = { name, image, species, status, gender, url, id };
     const historial = JSON.parse(localStorage.getItem('historial')) || [];
-    historial.push(personaje);
-    localStorage.setItem('historial', JSON.stringify(historial));
-    console.log(`Personaje ${name} guardado en el historial.`);
-}
+    
+    const personajeExistente = historial.find(p => p.id === personaje.id);
+
+    if (!personajeExistente) {
+        historial.push(personaje);
+        localStorage.setItem('historial', JSON.stringify(historial));
+
+        console.log(`Personaje ${name} guardado en el historial.`);
+    } else {
+        
+        console.log(`Personaje ${name} ya está en el historial.`);
+    };
+};
+
 
 function redirectToHistorial() {
     window.location.href = './html/historial.html';
-}
+};
 
 
 fetchPersonaje();
