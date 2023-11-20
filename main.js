@@ -20,7 +20,7 @@ async function fetchPersonaje(){
                         <div class="card-body">
                             <h5 class="card-title">${personaje.name}</h5>
                             <p class="card-text">${personaje.species}</p>
-                            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#personajeModal" onclick="openModal('${personaje.name}', '${personaje.species}')">Más info</button>
+                            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#personajeModal" onclick="openModal('${personaje.name}', '${personaje.species}', '${personaje.status}', '${personaje.gender}', '${personaje.url}', '${personaje.id}')">Más info</button>
                         </div>
                     </div>
                 </div>
@@ -32,7 +32,7 @@ async function fetchPersonaje(){
     }
 };
 
-function openModal(name, species) {
+function openModal(name, species, status, gender, url, id) {
     const modalTitle = document.querySelector('#exampleModalLabel');
     modalTitle.textContent = name;
 
@@ -41,6 +41,8 @@ function openModal(name, species) {
         <p>Especie: ${species}</p>
         
     `;
+    const myModal = new bootstrap.Modal(document.getElementById('personajeModal'));
+    myModal.show();
 }
 
 fetchPersonaje();
