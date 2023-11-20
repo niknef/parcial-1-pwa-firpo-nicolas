@@ -15,6 +15,7 @@ function fetchPersonaje(){
                     <div class="card-body">
                         <h5 class="card-title">${personaje.name}</h5>
                         <p class="card-text">${personaje.species}</p>
+                        <button type="button" class="btn btn-info">Más info</button>
                     </div>
                 </div>
             </div>
