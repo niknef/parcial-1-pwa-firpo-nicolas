@@ -1,5 +1,7 @@
+//Creamos una constante con la URL de la API
 const API_URL = 'https://rickandmortyapi.com/api/character/?page=20&status=alive';
 
+//creamos una funcion asincrona para obtener los datos de la API
 async function fetchPersonaje(){
     try {
         const response = await fetch(API_URL);
@@ -12,6 +14,7 @@ async function fetchPersonaje(){
         console.log(personajes);
         const container = document.querySelector('#container');
         let html = '';
+        //Recorremos el array de personajes y creamos una card para cada uno
         personajes.forEach(personaje => {
             html += `
                 <div class="col">
@@ -32,10 +35,11 @@ async function fetchPersonaje(){
     }
 };
 
+//Funcion para abrir el modal
 function openModal(name, image, species, status, gender, url, id) {
     const modalTitle = document.querySelector('#exampleModalLabel');
     modalTitle.textContent = `ID= #${id}`;
-
+    // completamos la modal con la informacion del personaje
     const modalContent = document.querySelector('.modal-body');
     modalContent.innerHTML = `
         <div class="text-center"> 
@@ -48,11 +52,12 @@ function openModal(name, image, species, status, gender, url, id) {
         <p><span class="fw-semibold">URL:</span>  <a class="text-primary fst-italic "href="${url}" target="_blank">${url}</a></p>
     `;
 
+    // guardamos el personaje en el historial
     const personaje = { name, image, species, status, gender, url, id };
     const historial = JSON.parse(localStorage.getItem('historial')) || [];
     
     const personajeExistente = historial.find(p => p.id === personaje.id);
-
+    //verificamos si el personaje ya existe en el historial
     if (!personajeExistente) {
         historial.push(personaje);
         localStorage.setItem('historial', JSON.stringify(historial));
@@ -64,7 +69,7 @@ function openModal(name, image, species, status, gender, url, id) {
     };
 };
 
-
+//funcion para redireccionar a la pagina de historial
 function redirectToHistorial() {
     window.location.href = './html/historial.html';
 };
