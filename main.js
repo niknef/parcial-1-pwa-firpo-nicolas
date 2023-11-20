@@ -15,7 +15,7 @@ async function fetchPersonaje(){
         personajes.forEach(personaje => {
             html += `
                 <div class="col">
-                    <div class="card h-100 mx-auto" style="max-width: 18rem;">
+                    <div class="card h-100 mx-auto border border-success" style="max-width: 18rem;">
                         <img src="${personaje.image}" class="card-img-top" alt="${personaje.name}">
                         <div class="card-body">
                             <h5 class="card-title">${personaje.name}</h5>
