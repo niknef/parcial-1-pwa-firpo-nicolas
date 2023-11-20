@@ -47,7 +47,12 @@ function openModal(name, image, species, status, gender, url, id) {
         <p><span class="fw-semibold">Genero:</span>  ${gender}</p>
         <p><span class="fw-semibold">URL:</span>  <a class="text-primary fst-italic "href="${url}" target="_blank">${url}</a></p>
     `;
-   
+
+    const personaje = { name, image, species, status, gender, url, id };
+    const historial = JSON.parse(localStorage.getItem('historial')) || [];
+    historial.push(personaje);
+    localStorage.setItem('historial', JSON.stringify(historial));
+    console.log(`Personaje ${name} guardado en el historial.`);
 }
 
 function redirectToHistorial() {
