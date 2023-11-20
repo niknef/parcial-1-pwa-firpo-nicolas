@@ -46,8 +46,6 @@ function openModal(name, image, species, status, gender, url, id) {
         <p><span class="fw-semibold">Estado:</span>  ${status}</p>
         <p><span class="fw-semibold">Genero:</span>  ${gender}</p>
         <p><span class="fw-semibold">URL:</span>  <a class="text-primary fst-italic "href="${url}" target="_blank">${url}</a></p>
-        
-        
     `;
    
 }
