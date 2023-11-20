@@ -20,7 +20,7 @@ async function fetchPersonaje(){
                         <div class="card-body">
                             <h5 class="card-title">${personaje.name}</h5>
                             <p class="card-text">${personaje.species}</p>
-                            <button type="button" class="btn btn-info">Más info</button>
+                            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#personajeModal" onclick="openModal('${personaje.name}', '${personaje.species}')">Más info</button>
                         </div>
                     </div>
                 </div>
@@ -31,7 +31,16 @@ async function fetchPersonaje(){
         console.error(error);
     }
 };
-    
-    
+
+function openModal(name, species) {
+    const modalTitle = document.querySelector('#exampleModalLabel');
+    modalTitle.textContent = name;
+
+    const modalContent = document.querySelector('.modal-body');
+    modalContent.innerHTML = `
+        <p>Especie: ${species}</p>
+        
+    `;
+}
 
 fetchPersonaje();
