@@ -20,7 +20,7 @@ async function fetchPersonaje(){
                         <div class="card-body">
                             <h5 class="card-title">${personaje.name}</h5>
                             <p class="card-text">${personaje.species}</p>
-                            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#personajeModal" onclick="openModal('${personaje.name}', '${personaje.species}', '${personaje.status}', '${personaje.gender}', '${personaje.url}', '${personaje.id}')">Más info</button>
+                            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#personajeModal" onclick="openModal('${personaje.name}', '${personaje.image}', '${personaje.species}', '${personaje.status}', '${personaje.gender}', '${personaje.url}', '${personaje.id}')">Más info</button>
                         </div>
                     </div>
                 </div>
@@ -32,17 +32,24 @@ async function fetchPersonaje(){
     }
 };
 
-function openModal(name, species, status, gender, url, id) {
+function openModal(name, image, species, status, gender, url, id) {
     const modalTitle = document.querySelector('#exampleModalLabel');
-    modalTitle.textContent = name;
+    modalTitle.textContent = `ID= #${id}`;
 
     const modalContent = document.querySelector('.modal-body');
     modalContent.innerHTML = `
-        <p>Especie: ${species}</p>
+        <div class="text-center"> 
+        <img src="${image}" class="modal-image w-50 mb-2 mx-auto rounded-3" alt="${name}">
+        <h5 class="fw-bold">${name}</h5>
+        </div>
+        <p><span class="fw-semibold">Especie:</span> ${species}</p>
+        <p><span class="fw-semibold">Estado:</span>  ${status}</p>
+        <p><span class="fw-semibold">Genero:</span>  ${gender}</p>
+        <p><span class="fw-semibold">URL:</span>  <a class="text-primary fst-italic "href="${url}" target="_blank">${url}</a></p>
+        
         
     `;
-    const myModal = new bootstrap.Modal(document.getElementById('personajeModal'));
-    myModal.show();
+   
 }
 
 fetchPersonaje();
